@@ -1,0 +1,21 @@
+button{
+    width: 50%;
+}
+.derecha{
+    float: right;
+}
+.izquierda{
+    float:left;
+}
+img{
+    width:100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    margin: auto;
+    display: block;
+}
+.posicionImagen{
+
+    background-size: cover;
+}

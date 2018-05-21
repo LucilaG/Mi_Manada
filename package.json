@@ -1,0 +1,30 @@
+{
+  "name": "animaladas",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "npm": "^6.0.1",
+    "rc-time-picker": "^3.3.1",
+    "react": "^16.3.1",
+    "react-avatar-editor": "^11.0.2",
+    "react-date-picker": "^6.10.1",
+    "react-datepicker": "^1.4.1",
+    "react-datetime": "^2.14.0",
+    "react-dom": "^16.3.1",
+    "react-dropzone": "^4.2.9",
+    "react-image": "^1.3.1",
+    "react-image-gallery": "^0.8.7",
+    "react-images": "^0.5.17",
+    "react-native-quick-select": "0.0.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "react-select": "^1.2.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
