@@ -2,6 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //componentes diseño
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 //import 'react-datepicker/dist/react-datepicker.css';
 import './forms.css';
 //componenetes del calendario
@@ -11,7 +14,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 //componentes del select
 import 'react-select/dist/react-select.css';
 import Select from 'react-select';
+
 import PruebaCarrusel from '/home/lucila/Project/animaladas/src/Parapachin/pruebaCarrusel'
+
 
 export class Animal extends React.Component {
     constructor(props) {
@@ -103,11 +108,15 @@ export class Animal extends React.Component {
         ]
 
         return (
+            <Grid>
             <form onSubmit={this.handleFormSubmit}>
-                <div className = "carrusel">
+            <Row>
+            <Col xs={12} md={12}>
                     <PruebaCarrusel imag = {imagenes} />
-                </div>
-                <div>
+            </Col>
+            </Row>
+            <Row>
+                <Col xs={12} md={4}>
                     <input
                         type="text"
                         name="name"
@@ -115,14 +124,13 @@ export class Animal extends React.Component {
                         onChange={this.handleChange}
                     />
 
-                </div>
-                <div>
+                </Col>
+                <Col xs={12} md={8}>
                     <Select
                         name="species"
                         value={this.state.species}
                         onChange={this.handleChangeSpecies}
                         placeholder={"Especie"}
-                        className="select"
                         options={[
                             { value: 'cat', label: 'Gato' },
                             { value: 'dog', label: 'Perro' },
@@ -135,35 +143,50 @@ export class Animal extends React.Component {
                             { value: 'other', label: 'Otro' },
                         ]}
                     />
-                </div>
-                <div>
-                    <Select
-                        name="sex"
-                        value={this.state.sex}
-                        onChange={this.handleChangeSex}
-                        placeholder={"Sexo"}
-                        className="select"
-                        options={[
-                            { value: 'male', label: 'Macho' },
-                            { value: 'female', label: 'Hembra' },
-                        ]}
-                    />
-                </div>
-                <div>
+                </Col>
+            </Row>
+            <Row>
+                <Col sm={12} md= {6}>
                     <input
                         type="text"
                         name="race"
                         placeholder='Raza'
                         onChange={this.handleChange}
                     />
-                </div>
-                <div>
+                </Col>
+                <Col sm={12} md= {3}>
+                    <Select
+                        name="size"
+                        value={this.state.size}
+                        onChange={this.handleChangeSize}
+                        placeholder={"Tamaño"}
+                        options={[
+                            { value: 'small', label: 'Pequeño' },
+                            { value: 'medium', label: 'Mediano' },
+                            { value: 'big', label: 'Grande' },
+                        ]}
+                    />
+                </Col>
+                <Col sm={12} md= {3}>
+                    <Select
+                        name="sex"
+                        value={this.state.sex}
+                        onChange={this.handleChangeSex}
+                        placeholder={"Sexo"}
+                        options={[
+                            { value: 'male', label: 'Macho' },
+                            { value: 'female', label: 'Hembra' },
+                        ]}
+                    />
+                </Col>
+            </Row>
+            <Row>  
+                <Col sm={12} md= {4}>
                     <Select
                         name="primaryColor"
                         value={this.state.primaryColor}
                         onChange={this.handleChangePrimaryColor}
                         placeholder={"Color primario"}
-                        className="select"
                         options={[
                             { value: 'yellow', label: 'Amarillo' },
                             { value: 'white', label: 'Blanco' },
@@ -174,14 +197,13 @@ export class Animal extends React.Component {
                             { value: 'black', label: 'Negro' },
                         ]}
                     />
-                </div>
-                <div>
+                </Col>
+                <Col sm={12} md= {4}>
                     <Select
                         name="secondaryColor"
                         value={this.state.secondaryColor}
                         onChange={this.handleChangeSecondaryColor}
                         placeholder={"Color secundario"}
-                        className="select"
                         options={[
                             { value: 'yellow', label: 'Amarillo' },
                             { value: 'white', label: 'Blanco' },
@@ -192,14 +214,13 @@ export class Animal extends React.Component {
                             { value: 'black', label: 'Negro' },
                         ]}
                     />
-                </div>
-                <div>
+                </Col>
+                <Col sm={12} md= {4}>
                     <Select
                         name="eyesColor"
                         value={this.state.eyesColor}
                         onChange={this.handleChangeEyesColor}
                         placeholder={"Color de ojos"}
-                        className="select"
                         options={[
                             { value: 'yellow', label: 'Amarillo' },
                             { value: 'blue', label: 'Azul' },
@@ -211,42 +232,39 @@ export class Animal extends React.Component {
                             { value: 'black', label: 'Negro' },
                         ]}
                     />
-                </div>
-                <div>
-                    <Select
-                        name="size"
-                        value={this.state.size}
-                        onChange={this.handleChangeSize}
-                        placeholder={"Tamaño"}
-                        className="select"
-                        options={[
-                            { value: 'small', label: 'Pequeño' },
-                            { value: 'medium', label: 'Mediano' },
-                            { value: 'big', label: 'Grande' },
-                        ]}
-                    />
-                </div>
-                <div>
+                </Col>
+               
+            </Row>
+            <Row>
+                <Col sm={12} md= {3}>
+                Fecha de Nacimiento:
+                </Col>
+                <Col sm={12} md= {4}>
                     <label className="date">
                         <DatePicker
+                            format="DD-MM-YYYY"
                             selected={this.state.startDate}
                             onChange={this.handleChange}
-                            format="DD-MM-YYYY"
-                        />;
-                        <br />
-                        *Si no conoce la fecha exacta, ingrese una fecha aproximada.
+                            
+                        />
                     </label>
-                </div>
-                <br />
-                <div>
-                    <input
+                </Col>
+                <Col sm={12} md= {5}>
+                *Si no conoce la fecha exacta, ingrese una fecha aproximada.
+                </Col>
+            </Row>
+            <Row> 
+                <Col sm={12} md= {12}>
+                    <textarea
                         type="text"
                         name="description"
                         placeholder='Describí a tu animal!'
                         onChange={this.handleChange}
                     />
-                </div>
+                </Col>
+            </Row> 
             </form>
+            </Grid>
         );
     }
 }

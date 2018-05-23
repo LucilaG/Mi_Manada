@@ -1,6 +1,9 @@
 //componenetes generales
 import React from 'react'
 //componentes diseño
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 //import 'react-datepicker/dist/react-datepicker.css';
 import './forms.css';
 
@@ -73,8 +76,11 @@ export class Vaccine extends React.Component {
         console.log(this.state.hepatitis);
 
         return (
-            <div>
+            <Grid>
+                <Row>
                 <h3>Vacunas recomendadas para las semanas que posee tu animal:</h3>
+                </Row>
+                <Row>
                 <label>
 
                     <div className={this.state.parvovirus ? '' : 'hidden'}>
@@ -156,11 +162,16 @@ export class Vaccine extends React.Component {
 
 
                 </label>
-                <input type="submit" value="Submit" />
+                </Row>
+                <Row>
+                <button type="submit"> Enviar </button>
+                </Row>
+                <Row>
                 <div>
                     <p>CONSULTAR SIEMPRE CON SU VETERINARIO</p>
                 </div>
-            </div>
+                </Row>
+            </Grid>
         );
     }
 

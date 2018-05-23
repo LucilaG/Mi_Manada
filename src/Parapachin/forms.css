@@ -1,52 +1,45 @@
+
+body {
+    background-color: #004d4d;
+}
 form{
     background-color: white;
-
 }
-input {
+button {
     width: 100%;
-    padding: 12px 20px;
-    margin: 1px 0;
-    box-sizing: border-box;
-    border: 2px solid #8cbfc0;
-    color: #004d4d;
-    font-family: 'Trend Sans One'; 
-
-}
-body{
-    background-color:whitesmoke;
-}
-button{
-    width: 100%;
-    padding: 12px 20px;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
     background-color: #8cbfc0;
     border: none;
-    font-family: 'Trend Sans One'; 
-  text-decoration-style: none;
-  color: #004d4d;
+    font-family: 'Trend Sans One';
+    text-decoration-style: none;
+    color: #004d4d;
+    margin: auto;
 }
-image{
+
+image {
     width: 100%
 }
 
-.date{
-    font-family: 'Trend Sans One'; 
+.date {
+    font-family: 'Trend Sans One';
     color: #8cbfc0;
 }
-
-.select{
+input{
     width: 100%;
-    background-color: #8cbfc0;
-    border: none;
-    font-family: 'Trend Sans One'; 
-  text-decoration-style: none;
-  color: #004d4d;
 }
 
-.hidden { 
-    display:none; 
+.hidden {
+    display: none;
 }
-.carrusel{
+
+.carrusel {
     width: 100%;
     height: auto;
 }
-
+textarea{
+    width: 100%;
+    resize: none;
+    height: auto;
+}

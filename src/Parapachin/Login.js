@@ -3,12 +3,12 @@ import './forms.css'
 
 
 export class Login extends React.Component {
-
-    state = {
+constructor(){
+    this.state ={
         email: "",
         password: "",
     }
-
+}
     change = e => {
         this.setState({
             [e.target.name]: e.target.value
