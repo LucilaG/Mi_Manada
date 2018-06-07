@@ -4,11 +4,10 @@ import React from 'react'
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-//import 'react-datepicker/dist/react-datepicker.css';
-import './forms.css';
 
 //otras clases
 import './Animal.js'
+import Footer from '/home/lucila/Project/animaladas/src/Parapachin/footer.js'
 
 export class Vaccine extends React.Component {
 
@@ -25,153 +24,197 @@ export class Vaccine extends React.Component {
             rinotraqueitis: false,
             calicivoris: false,
             clamidosis: false,
-            rabia: false
+            rabia: false,
+            weeks: 0
         };
-
     };
+    componentWillMount(){
+            var days = 113;
+            if (days >= 42 && days <= 49) {
+                this.weeks = 6;
+            } else if (days >= 56 && days <= 63) {
+                this.weeks = 8;
+            } else if (days >= 84 && days <= 91) {
+                this.weeks = 12;
+            } else if (days >= 112 && days <= 119) {
+                this.weeks = 16;
+            } else if (days >= 126 && days <= 133) {
+                this.weeks = 18;
+            } else if(days > 365){
+                this.weeks= 53;
+            }
+
+            this.setState({weeks:this.weeks})
+    
+            if (this.weeks === 8 || this.weeks === 12) {
+                this.setState({
+                    leptospirosis : true,
+                    rinotraqueitis : true,
+                    calicivoris : true,
+                    clamidosis : true
+                })
+            }if (this.weeks === 8 || this.weeks === 12 || this.weeks === 6 || this.weeks === 18) {
+                this.setState({
+                    parvovirus : true,
+                    adenovirus : true,
+                    coronanavirus : true,
+                    moquillo : true,
+                    hepatitis : true,
+                    parainfluenza : true,
+                })
+            }if (this.weeks>52){
+                this.setState({
+                    leptospirosis : true,
+                    rinotraqueitis : true,
+                    calicivoris : true,
+                    clamidosis : true,
+                    parvovirus : true,
+                    adenovirus : true,
+                    coronanavirus : true,
+                    moquillo : true,
+                    hepatitis : true,
+                    parainfluenza : true,
+                    rabia : true,
+                })
+                }else if (this.weeks === 16) {
+                    this.setState({rabia : true})
+                }
+        }
+    
     handleChangeVaccine = (selectedOption) => {
         this.setState({ vaccine: selectedOption });
         console.log(`Selected: ${selectedOption.label}`);
     }
-
-
+   
     render() {
-        var weeks;
-        var days = 57;
-        if (days >= 42 && days <= 49) {
-            weeks = 6;
-        } else if (days >= 56 && days <= 63) {
-            weeks = 8;
-        } else if (days >= 84 && days <= 91) {
-            weeks = 12;
-        } else if (days >= 112 && days <= 119) {
-            weeks = 16;
-        } else if (days >= 126 && days <= 133) {
-            weeks = 18;
-        }
-
-        if (weeks === 8 || weeks === 12) {
-            this.state.leptospirosis = true;
-            this.state.rinotraqueitis = true;
-            this.state.calicivoris = true;
-            this.state.clamidosis = true;
-        }
-        if (weeks === 8 || weeks === 12 || weeks === 6 || weeks === 18) {
-            this.state.parvovirus = true;
-            this.state.adenovirus = true;
-            this.state.coronanavirus = true;
-            this.state.moquillo = true;
-            this.state.hepatitis = true;
-            this.state.parainfluenza = true;
-        } else if (weeks === 16) {
-            this.state.rabia = true;
-        }
-
-        console.log(weeks);
-        console.log(this.state.rabia);
-        console.log(this.state.parvovirus);
-        console.log(this.state.adenovirus);
-        console.log(this.state.coronanavirus);
-        console.log(this.state.moquillo);
-        console.log(this.state.hepatitis);
-
         return (
             <Grid>
+            <Grid>
                 <Row>
-                <h3>Vacunas recomendadas para las semanas que posee tu animal:</h3>
+                    <Col xs={12} md={12}>
+                    <h4>Vacunas recomendadas para las semanas que posee tu animal:</h4>
+                    </Col>
                 </Row>
-                <Row>
-                <label>
+                <br />
+                <br />
+                <Grid className="heigthVaccineMin">
+                        <Row className={this.state.parvovirus ? 'colVaccine' : 'hidden'}>
+                            <Col xs={6} md={6} className="inputLabel">
+                                    <p >Parvovirus:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="parvovirus"/>
+                            </Col>
+                        </Row>
 
-                    <div className={this.state.parvovirus ? '' : 'hidden'}>
-                        <label>
-                            Parvovirus:
-                        <input type="checkbox" name="parvovirus" />
-                        </label>
-                    </div>
+                        <Row className={this.state.adenovirus ? 'colVaccine' : 'hidden'}>
+                            <Col xs={6} md={6} className="inputLabel">
+                                    <p >Adenovirus:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="adenovirus"/>
+                            </Col>
+                        </Row>
 
-                    <div className={this.state.adenovirus ? '' : 'hidden'}>
-                        <label>
-                            Adenovirus:
-                        <input type="checkbox" name="adenovirus" />
-                        </label>
-                    </div>
+                        <Row className={this.state.coronanavirus ? 'colVaccine' : 'hidden'}>
+                           <Col xs={6} md={6} className="inputLabel">
+                                    <p>Coronanavirus:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name=" coronanavirus"/>
+                            </Col>
+                        </Row>
 
-                    <div className={this.state.coronanavirus ? '' : 'hidden'}>
-                        <label>
-                            Coronanavirus:
-                        <input type="checkbox" name=" coronanavirus" />
-                        </label>
-                    </div>
+                        <Row  className={this.state.moquillo ? 'colVaccine' : 'hidden'}>
+                            <Col xs={6} md={6} className="inputLabel">
+                                    <p>Moquillo:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="moquillo"/>
+                            </Col>
+                        </Row>
 
-                    <div className={this.state.moquillo ? '' : 'hidden'}>
-                        <label>
-                            Moquillo:
-                        <input type="checkbox" name="moquillo" />
-                        </label>
-                    </div>
+                        <Row className={this.state.hepatitis ? 'colVaccine' : 'hidden'}>
+                            <Col xs={6} md={6} className="inputLabel">
+                                    <p> Hepatitis:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="hepatitis"/>
+                            </Col>
+                         </Row>
 
-                    <div className={this.state.hepatitis ? '' : 'hidden'}>
-                        <label>
-                            Hepatitis:
-                        <input type="checkbox" name="hepatitis" />
-                        </label>
-                    </div>
+                        <Row className={this.state.parainfluenza ? 'colVaccine' : 'hidden'}>
+                            <Col xs={6} md={6} className="inputLabel">
+                                    <p> Parainfluenza:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="parainfluenza"/>
+                            </Col>
+                         </Row>
 
-                    <div className={this.state.parainfluenza ? '' : 'hidden'}>
-                        <label>
-                            Parainfluenza:
-                        <input type="checkbox" name="parainfluenza" />
-                        </label>
-                    </div>
+                        <Row className={this.state.leptospirosis ? 'colVaccine' : 'hidden'}>
+                           <Col xs={6} md={6} className="inputLabel">
+                                    <p>Leptospirosis:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="leptospirosis"/>
+                            </Col>
+                         </Row>
 
-                    <div className={this.state.leptospirosis ? '' : 'hidden'}>
-                        <label>
-                            Leptospirosis:
-                        <input type="checkbox" name="leptospirosis" />
-                        </label>
-                    </div>
+                        <Row className={this.state.rinotraqueitis ? 'colVaccine' : 'hidden'}>
+                          <Col xs={6} md={6}  className="inputLabel">
+                                    <p> Rinotraqueitis:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="rinotraqueitis"/>
+                            </Col>
+                         </Row>
 
-                    <div className={this.state.rinotraqueitis ? '' : 'hidden'}>
-                        <label>
-                            Rinotraqueitis:
-                        <input type="checkbox" name="rinotraqueitis" />
-                        </label>
-                    </div>
+                        <Row className={this.state.clamidosis ? 'colVaccine' : 'hidden'}>
+                           <Col xs={6} md={6}  className="inputLabel">
+                                    <p> Clamidosis:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="clamidosis"/>
+                            </Col>
+                         </Row>
 
-                    <div className={this.state.clamidosis ? '' : 'hidden'}>
-                        <label>
-                            Clamidosis:
-                        <input type="checkbox" name="clamidosis" />
-                        </label>
-                    </div>
+                        <Row className={this.state.calicivoris ? 'colVaccine' : 'hidden'}>
+                           <Col xs={6} md={6}  className="inputLabel">
+                                    <p> Parvovirus:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="parvovirus"/>
+                            </Col>
+                         </Row>
 
-                    <div className={this.state.calicivoris ? '' : 'hidden'}>
-                        <label>
-                            Parvovirus:
-                        <input type="checkbox" name="parvovirus" />
-                        </label>
-                    </div>
-
-                    <div className={this.state.rabia ? '' : 'hidden'}>
-                        <label>
-                            Rabia:
-                        <input type="checkbox" name="rabia" />
-                        </label>
-                    </div>
-
-
-                </label>
-                </Row>
-                <Row>
-                <button type="submit"> Enviar </button>
-                </Row>
-                <Row>
-                <div>
-                    <p>CONSULTAR SIEMPRE CON SU VETERINARIO</p>
-                </div>
-                </Row>
-            </Grid>
+                        <Row className={this.state.rabia ? 'colVaccine' : 'hidden'}>
+                           <Col xs={6} md={6}  className="inputLabel">
+                                    <p> Rabia:</p>
+                            </Col>
+                            <Col xs={6} md={6}  className="inputLabel">
+                                    <input type="checkbox" name="rabia"/>
+                            </Col>
+                        </Row>
+                        </Grid>
+                        <Row>
+                            <Col xs={12} md={12}>
+                                <p>CONSULTAR SIEMPRE CON SU VETERINARIO</p>
+                            </Col>
+                        </Row>
+                        
+                        <Row>
+                            <Col xs={12} md={12} className="botones">
+                            <button type="submit"> Enviar </button>
+                        </Col>
+                    </Row>
+            </Grid>          
+                        <Row className="footerFixed">
+                            <Col xs={12} md={12}>
+                                    <Footer />
+                            </Col>
+                        </Row>
+           </Grid>
         );
     }
 

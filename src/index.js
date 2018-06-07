@@ -9,6 +9,8 @@ import Animal from './Parapachin/Animal'
 import Vaccine from '/home/lucila/Project/animaladas/src/Parapachin/vaccine'
 import Home from '/home/lucila/Project/animaladas/src/Parapachin/home'
 import PruebaCarrusel from '/home/lucila/Project/animaladas/src/Parapachin/pruebaCarrusel'
+import Footer from '/home/lucila/Project/animaladas/src/Parapachin/footer.js'
+
 import {
     BrowserRouter as Router,
     Route
@@ -29,6 +31,7 @@ ReactDOM.render(<Router>
         <Route path='/Vaccine' component={Vaccine} />
         <Route path='/Home' component={Home} />
         <Route path='/PruebaCarrusel' component={PruebaCarrusel}/>
+        <Route path='/Footer' component={Footer}/>
     </div>
 
 </Router>, document.getElementById('root'));

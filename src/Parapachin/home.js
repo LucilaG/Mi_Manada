@@ -32,7 +32,7 @@ export class Home extends React.Component {
                 <button className="buttonApp">
                     <p>Registrarse</p>
                 </button>
-            </Link> 
+            </Link>
             </Col>
             <Col xs={12} md={4}>
             <Link to='/Animal'>

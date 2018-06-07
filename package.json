@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "npm": "^6.0.1",
+    "npm": "^6.1.0",
     "rc-time-picker": "^3.3.1",
     "react": "^16.3.1",
     "react-avatar-editor": "^11.0.2",

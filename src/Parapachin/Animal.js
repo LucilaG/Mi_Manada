@@ -16,6 +16,7 @@ import 'react-select/dist/react-select.css';
 import Select from 'react-select';
 
 import PruebaCarrusel from '/home/lucila/Project/animaladas/src/Parapachin/pruebaCarrusel'
+import Footer from '/home/lucila/Project/animaladas/src/Parapachin/footer.js'
 
 
 export class Animal extends React.Component {
@@ -41,8 +42,13 @@ export class Animal extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    handleChangeDate = date => {
+        this.setState({
+          startDate: date
+        });
+      }
 
-    handleChange(event) {
+    handleChange = event => {
         this.setState({ value: event.target.value });
     }
     //metodos de los select
@@ -95,10 +101,6 @@ export class Animal extends React.Component {
 
 
 
-
-    //setter y getters
-
-
     render() {
         var imagenes = [
             "imag/placeholder1.jpg",
@@ -108,6 +110,7 @@ export class Animal extends React.Component {
         ]
 
         return (
+            <Grid>
             <Grid>
             <form onSubmit={this.handleFormSubmit}>
             <Row>
@@ -120,8 +123,9 @@ export class Animal extends React.Component {
                     <input
                         type="text"
                         name="name"
-                        placeholder='Nombre'
+                        placeholder='   Nombre'
                         onChange={this.handleChange}
+                        className="inputAnimal"
                     />
 
                 </Col>
@@ -130,7 +134,7 @@ export class Animal extends React.Component {
                         name="species"
                         value={this.state.species}
                         onChange={this.handleChangeSpecies}
-                        placeholder={"Especie"}
+                        placeholder={"   Especie"}
                         options={[
                             { value: 'cat', label: 'Gato' },
                             { value: 'dog', label: 'Perro' },
@@ -150,8 +154,9 @@ export class Animal extends React.Component {
                     <input
                         type="text"
                         name="race"
-                        placeholder='Raza'
+                        placeholder='   Raza'
                         onChange={this.handleChange}
+                        className="inputAnimal"
                     />
                 </Col>
                 <Col sm={12} md= {3}>
@@ -180,7 +185,7 @@ export class Animal extends React.Component {
                     />
                 </Col>
             </Row>
-            <Row>  
+            <Row>
                 <Col sm={12} md= {4}>
                     <Select
                         name="primaryColor"
@@ -233,37 +238,42 @@ export class Animal extends React.Component {
                         ]}
                     />
                 </Col>
-               
             </Row>
             <Row>
                 <Col sm={12} md= {3}>
-                Fecha de Nacimiento:
+               <p className="pDate">Fecha de Nacimiento:</p>
                 </Col>
                 <Col sm={12} md= {4}>
-                    <label className="date">
+                    <label className="calendar">
                         <DatePicker
-                            format="DD-MM-YYYY"
+                            dateFormat="DD/MM/YYYY"
                             selected={this.state.startDate}
-                            onChange={this.handleChange}
-                            
+                            onChange={this.handleChangeDate}
+                            className="inputAnimal"
                         />
                     </label>
                 </Col>
                 <Col sm={12} md= {5}>
-                *Si no conoce la fecha exacta, ingrese una fecha aproximada.
+                <p className="pDate">*Si no conoce la fecha exacta, ingrese una fecha aproximada.</p>
                 </Col>
             </Row>
-            <Row> 
+            <Row>
                 <Col sm={12} md= {12}>
                     <textarea
                         type="text"
                         name="description"
-                        placeholder='Describí a tu animal!'
+                        placeholder='   Describí a tu animal!'
                         onChange={this.handleChange}
                     />
                 </Col>
-            </Row> 
+            </Row>
             </form>
+            </Grid>
+            <Row> 
+           <Col xs={12} md={12} className="footerFixed">
+                    <Footer />
+            </Col>
+            </Row>
             </Grid>
         );
     }

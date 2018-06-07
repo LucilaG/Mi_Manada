@@ -3,10 +3,11 @@ import './forms.css'
 
 
 export class Login extends React.Component {
-constructor(){
+constructor(props){
+    super(props);
     this.state ={
-        email: "",
-        password: "",
+        email: '',
+        password: '',
     }
 }
     change = e => {
